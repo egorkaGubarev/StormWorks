@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Av4" description="Average" width="1" length="5" id_counter="16" id_counter_node="5" sym8="33042" sym9="33426" sym10="58002" sym11="37982" sym12="37970" sym13="36882" sym14="36876">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Input 1" mode="1" type="1" description="x"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Input 2" mode="1" type="1" description="y">
+				<position z="4"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Output" type="1" description="(x + y + a + b) / 4">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="12">
+			<node label="Input 3" mode="1" type="1" description="a">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="14">
+			<node label="Input 4" mode="1" type="1" description="b">
+				<position z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="6">
+				<object id="8">
+					<pos x="1.25" y="-0.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+				</object>
+			</c>
+			<c type="9">
+				<object id="9">
+					<pos x="3.75" y="-1.5"/>
+					<in1 component_id="16"/>
+					<in2 component_id="10"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="10">
+					<pos x="2.5" y="-2"/>
+					<n text="4" value="4"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="15">
+					<pos x="1.25" y="-2"/>
+					<in1 component_id="12"/>
+					<in2 component_id="14"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="16">
+					<pos x="2.5" y="-1.25"/>
+					<in1 component_id="8"/>
+					<in2 component_id="15"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="5" y="-1.25"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="12">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="14">
+					<pos y="-2.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8">
+				<pos x="1.25" y="-0.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+			</c0>
+			<c1 id="9">
+				<pos x="3.75" y="-1.5"/>
+				<in1 component_id="16"/>
+				<in2 component_id="10"/>
+			</c1>
+			<c2 id="10">
+				<pos x="2.5" y="-2"/>
+				<n text="4" value="4"/>
+			</c2>
+			<c3 id="15">
+				<pos x="1.25" y="-2"/>
+				<in1 component_id="12"/>
+				<in2 component_id="14"/>
+			</c3>
+			<c4 id="16">
+				<pos x="2.5" y="-1.25"/>
+				<in1 component_id="8"/>
+				<in2 component_id="15"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="7">
+				<pos x="5" y="-1.25"/>
+				<in1 component_id="9"/>
+			</c2>
+			<c3 id="12">
+				<pos y="-1.5"/>
+			</c3>
+			<c4 id="14">
+				<pos y="-2.25"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

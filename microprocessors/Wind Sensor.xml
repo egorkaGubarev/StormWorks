@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Wind Sensor" description="Counts wind speed pojection" width="1" length="3" id_counter="9" id_counter_node="3" sym9="2378" sym10="2378" sym11="2378" sym12="2389" sym13="1813" sym14="85" sym15="17">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Speed, m / s" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Direction, rot" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Relative speed, m / s" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1520155908">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="45">
+				<object id="8" e="cos(pi2 * x)">
+					<pos x="1.25" y="-0.75"/>
+					<in1 component_id="4"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="9">
+					<pos x="2.5" y="-0.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="3.75" y="-0.25"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8" e="cos(pi2 * x)">
+				<pos x="1.25" y="-0.75"/>
+				<in1 component_id="4"/>
+			</c0>
+			<c1 id="9">
+				<pos x="2.5" y="-0.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="8"/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="7">
+				<pos x="3.75" y="-0.25"/>
+				<in1 component_id="9"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

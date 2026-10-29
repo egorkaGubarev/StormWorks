@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Video Input Switch" width="2" length="2" id_counter="12" id_counter_node="4" sym9="1860" sym10="2122" sym11="1610" sym12="337" sym13="3665" sym15="64">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="Switch" mode="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Output" type="6">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="Input 1" mode="1" type="6">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Input 2" mode="1" type="6">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1020668499">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="57">
+				<object id="12">
+					<pos x="1" y="-1.25"/>
+					<in1 component_id="10"/>
+					<in2 component_id="6"/>
+					<in3 component_id="1"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-0.25" y="-2"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="4">
+					<pos x="2.25" y="-0.75"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="6">
+					<pos x="-0.25" y="-1.25"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="10">
+					<pos x="-0.25" y="-0.5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="12">
+				<pos x="1" y="-1.25"/>
+				<in1 component_id="10"/>
+				<in2 component_id="6"/>
+				<in3 component_id="1"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-0.25" y="-2"/>
+			</c0>
+			<c1 id="4">
+				<pos x="2.25" y="-0.75"/>
+				<in1 component_id="12"/>
+			</c1>
+			<c2 id="6">
+				<pos x="-0.25" y="-1.25"/>
+			</c2>
+			<c3 id="10">
+				<pos x="-0.25" y="-0.5"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

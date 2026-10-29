@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Target" description="Aims with offset" width="2" length="3" id_counter="19" id_counter_node="6" sym9="2948" sym10="2628" sym11="2948" sym12="6660" sym13="10692" sym14="4" sym15="31">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Look x" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Look y" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="Distance" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="9">
+			<node label="Target x" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="12">
+			<node label="Target y" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="17">
+			<node label="Unlock" mode="1">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="-125059453">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="13" count="3">
+					<pos x="1.25" y="-1"/>
+					<inc component_id="19"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+					<in3 component_id="6"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="14" script="gun_offset = 3.5
+
+function onTick()
+
+    if input.getBool(1) then
+        look_azim = input.getNumber(1)
+        look_pitch = input.getNumber(2)
+
+        distance = math.max(input.getNumber(3), gun_offset)
+
+        output.setNumber(1, 4 * (look_azim + math.asin(gun_offset * math.sin(look_azim * 2 * math.pi) / distance) / (2 * math.pi)))
+        output.setNumber(2, 4 * (look_pitch + math.asin(gun_offset * math.sin(look_pitch * 2 * math.pi) / distance) / (2 * math.pi)))
+    else
+        output.setNumber(1, 0)
+        output.setNumber(2, 0)
+    end
+end">
+					<pos x="2.5" y="-0.5"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="15">
+					<pos x="3.75"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="16" i="1">
+					<pos x="3.75" y="-0.75"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="19" count="1">
+					<pos y="0.75"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="9">
+					<pos x="5"/>
+					<in1 component_id="15"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="12">
+					<pos x="5" y="-0.75"/>
+					<in1 component_id="16"/>
+				</object>
+			</c>
+			<c>
+				<object id="17">
+					<pos x="-1.25" y="0.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="13" count="3">
+				<pos x="1.25" y="-1"/>
+				<inc component_id="19"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+				<in3 component_id="6"/>
+			</c0>
+			<c1 id="14" script="gun_offset = 3.5
+
+function onTick()
+
+    if input.getBool(1) then
+        look_azim = input.getNumber(1)
+        look_pitch = input.getNumber(2)
+
+        distance = math.max(input.getNumber(3), gun_offset)
+
+        output.setNumber(1, 4 * (look_azim + math.asin(gun_offset * math.sin(look_azim * 2 * math.pi) / distance) / (2 * math.pi)))
+        output.setNumber(2, 4 * (look_pitch + math.asin(gun_offset * math.sin(look_pitch * 2 * math.pi) / distance) / (2 * math.pi)))
+    else
+        output.setNumber(1, 0)
+        output.setNumber(2, 0)
+    end
+end">
+				<pos x="2.5" y="-0.5"/>
+				<in1 component_id="13"/>
+			</c1>
+			<c2 id="15">
+				<pos x="3.75"/>
+				<in1 component_id="14"/>
+			</c2>
+			<c3 id="16" i="1">
+				<pos x="3.75" y="-0.75"/>
+				<in1 component_id="14"/>
+			</c3>
+			<c4 id="19" count="1">
+				<pos y="0.75"/>
+				<in1 component_id="17"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="6">
+				<pos y="-1.5"/>
+			</c2>
+			<c3 id="9">
+				<pos x="5"/>
+				<in1 component_id="15"/>
+			</c3>
+			<c4 id="12">
+				<pos x="5" y="-0.75"/>
+				<in1 component_id="16"/>
+			</c4>
+			<c5 id="17">
+				<pos x="-1.25" y="0.75"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

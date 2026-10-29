@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Constant on Switch" description="Outputs number when on" width="1" length="2" id_counter="6" id_counter_node="2" sym9="7374" sym10="8481" sym11="8481" sym12="6433" sym13="1217" sym14="1025" sym15="14350">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Output" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="22">
+				<object id="5">
+					<pos x="1.25"/>
+					<in1 component_id="6"/>
+					<in3 component_id="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="6">
+					<pos y="0.5"/>
+					<n text="0.5" value="0.5"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos y="-0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="4">
+					<pos x="2.5" y="0.5"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5">
+				<pos x="1.25"/>
+				<in1 component_id="6"/>
+				<in3 component_id="1"/>
+			</c0>
+			<c1 id="6">
+				<pos y="0.5"/>
+				<n text="0.5" value="0.5"/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos y="-0.25"/>
+			</c0>
+			<c1 id="4">
+				<pos x="2.5" y="0.5"/>
+				<in1 component_id="5"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

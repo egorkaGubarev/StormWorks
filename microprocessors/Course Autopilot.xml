@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Course Autopilot" width="1" length="5" id_counter="17" id_counter_node="6" sym1="4553" sym2="2345" sym3="2345" sym4="2351" sym5="7465" sym6="2057" sym7="6" sym9="1230" sym10="1313" sym11="1313" sym12="3361" sym13="5313" sym14="1" sym15="14">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="Target Course, deg" mode="1" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Rotation Speed, deg / s" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="5" component_id="15">
+			<node label="Current Course, rot" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="17">
+			<node label="Target Rotation Speed, deg / s" mode="1" type="1">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="10" count="3">
+					<pos x="2.5" y="-0.25"/>
+					<inc component_id="11"/>
+					<in1 component_id="3"/>
+					<in2 component_id="15"/>
+					<in3 component_id="17"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="11" count="1">
+					<pos x="1.25" y="0.75"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="12">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="13" script="p = 40
+max_rotation_speed = 6
+
+function onTick()
+    on = input.getBool(1)
+
+    target_course = input.getNumber(1)
+    current_course = input.getNumber(2)
+    target_rotation_speed = input.getNumber(3)
+
+    rotation_speed = target_rotation_speed
+
+    if on then
+        target_course = target_course / 360
+
+        if target_course &lt; 0.5 then
+            target_course = -target_course
+        else
+            target_course = 1 - target_course
+        end
+
+        turn = current_course - target_course
+
+        if turn &gt; 0.5 then
+            turn = turn - 1
+        end
+
+        if turn &lt; -0.5 then
+            turn = 1 + turn
+        end
+        
+        rotation_speed = math.min(max_rotation_speed, math.max(-max_rotation_speed, turn * p))
+    end
+
+    output.setNumber(1, rotation_speed)
+end">
+					<pos x="3.75"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos y="0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos x="1.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="6.25" y="0.25"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="15">
+					<pos x="1.25" y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="17">
+					<pos x="1.25" y="-1.5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="10" count="3">
+				<pos x="2.5" y="-0.25"/>
+				<inc component_id="11"/>
+				<in1 component_id="3"/>
+				<in2 component_id="15"/>
+				<in3 component_id="17"/>
+			</c0>
+			<c1 id="11" count="1">
+				<pos x="1.25" y="0.75"/>
+				<in1 component_id="1"/>
+			</c1>
+			<c2 id="12">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="13"/>
+			</c2>
+			<c3 id="13" script="p = 40
+max_rotation_speed = 6
+
+function onTick()
+    on = input.getBool(1)
+
+    target_course = input.getNumber(1)
+    current_course = input.getNumber(2)
+    target_rotation_speed = input.getNumber(3)
+
+    rotation_speed = target_rotation_speed
+
+    if on then
+        target_course = target_course / 360
+
+        if target_course &lt; 0.5 then
+            target_course = -target_course
+        else
+            target_course = 1 - target_course
+        end
+
+        turn = current_course - target_course
+
+        if turn &gt; 0.5 then
+            turn = turn - 1
+        end
+
+        if turn &lt; -0.5 then
+            turn = 1 + turn
+        end
+        
+        rotation_speed = math.min(max_rotation_speed, math.max(-max_rotation_speed, turn * p))
+    end
+
+    output.setNumber(1, rotation_speed)
+end">
+				<pos x="3.75"/>
+				<in1 component_id="10"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos y="0.75"/>
+			</c0>
+			<c1 id="3">
+				<pos x="1.25"/>
+			</c1>
+			<c2 id="8">
+				<pos x="6.25" y="0.25"/>
+				<in1 component_id="12"/>
+			</c2>
+			<c3 id="15">
+				<pos x="1.25" y="-0.75"/>
+			</c3>
+			<c4 id="17">
+				<pos x="1.25" y="-1.5"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

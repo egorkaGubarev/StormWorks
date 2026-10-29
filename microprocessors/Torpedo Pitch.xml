@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Torpedo Pitch" width="1" length="6" id_counter="42" id_counter_node="12" sym1="545" sym2="289" sym3="295" sym4="297" sym5="937" sym6="263" sym7="32" sym9="2436" sym10="2628" sym11="2628" sym12="6724" sym13="10628" sym14="4" sym15="31">
+	<nodes>
+		<n id="2" component_id="4">
+			<node label="Left fin" type="1"/>
+		</n>
+		<n id="8" component_id="25">
+			<node label="Current Pitch, rot" mode="1" type="1" description="Tilt sensor reading">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="9" component_id="28">
+			<node label="Roll, rot" mode="1" type="1" description="Tilt sensor">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="10" component_id="31">
+			<node label="Right fin" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="11" component_id="35">
+			<node label="Altitude, m" mode="1" type="1" description="Altimeter">
+				<position z="4"/>
+			</node>
+		</n>
+		<n id="12" component_id="38">
+			<node label="Pitch Instructions" mode="1" type="5" description="2: depth, m. 3: distance, m">
+				<position z="5"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1020668499">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="56">
+				<object id="6" script="pitch_p = 60
+depth_p = 0.01
+roll_p = 4
+max_pitch = 0.1
+ascent_distance = 200
+
+function onTick()
+    pitch = input.getNumber(1)
+    roll = input.getNumber(2)
+    altitude = input.getNumber(3)
+    input_depth = input.getNumber(4)
+    distance = input.getNumber(5)
+
+    roll_correction = math.min(0.5, math.max(-0.5, roll * roll_p))
+    
+    if distance &gt; ascent_distance then
+        target_altitude = -input_depth
+    else
+        target_altitude = -distance * input_depth / ascent_distance
+    end
+
+    target_pitch = math.min(max_pitch, math.max(-max_pitch, (target_altitude - altitude) * depth_p))
+    pitch_correction = math.min(0.5, math.max(-0.5, (target_pitch - pitch) * pitch_p))
+
+    output.setNumber(1, pitch_correction - roll_correction)
+    output.setNumber(2, pitch_correction + roll_correction)
+end">
+					<pos x="2.5"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="7">
+					<pos x="3.75" y="0.25"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="26" count="5">
+					<pos x="1.25" y="-1.75"/>
+					<in1 component_id="25"/>
+					<in2 component_id="28"/>
+					<in3 component_id="35"/>
+					<in4 component_id="40"/>
+					<in5 component_id="42"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="33" i="1">
+					<pos x="3.75" y="-0.5"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="40" i="1">
+					<pos y="-2"/>
+					<in1 component_id="38"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="42" i="2">
+					<pos y="-2.75"/>
+					<in1 component_id="38"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="3">
+				<object id="4">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="7"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="25">
+					<pos y="0.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="28">
+					<pos y="-0.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="31">
+					<pos x="5" y="-0.5"/>
+					<in1 component_id="33"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="35">
+					<pos y="-1.25"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="38">
+					<pos x="-1.25" y="-2.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6" script="pitch_p = 60
+depth_p = 0.01
+roll_p = 4
+max_pitch = 0.1
+ascent_distance = 200
+
+function onTick()
+    pitch = input.getNumber(1)
+    roll = input.getNumber(2)
+    altitude = input.getNumber(3)
+    input_depth = input.getNumber(4)
+    distance = input.getNumber(5)
+
+    roll_correction = math.min(0.5, math.max(-0.5, roll * roll_p))
+    
+    if distance &gt; ascent_distance then
+        target_altitude = -input_depth
+    else
+        target_altitude = -distance * input_depth / ascent_distance
+    end
+
+    target_pitch = math.min(max_pitch, math.max(-max_pitch, (target_altitude - altitude) * depth_p))
+    pitch_correction = math.min(0.5, math.max(-0.5, (target_pitch - pitch) * pitch_p))
+
+    output.setNumber(1, pitch_correction - roll_correction)
+    output.setNumber(2, pitch_correction + roll_correction)
+end">
+				<pos x="2.5"/>
+				<in1 component_id="26"/>
+			</c0>
+			<c1 id="7">
+				<pos x="3.75" y="0.25"/>
+				<in1 component_id="6"/>
+			</c1>
+			<c2 id="26" count="5">
+				<pos x="1.25" y="-1.75"/>
+				<in1 component_id="25"/>
+				<in2 component_id="28"/>
+				<in3 component_id="35"/>
+				<in4 component_id="40"/>
+				<in5 component_id="42"/>
+			</c2>
+			<c3 id="33" i="1">
+				<pos x="3.75" y="-0.5"/>
+				<in1 component_id="6"/>
+			</c3>
+			<c4 id="40" i="1">
+				<pos y="-2"/>
+				<in1 component_id="38"/>
+			</c4>
+			<c5 id="42" i="2">
+				<pos y="-2.75"/>
+				<in1 component_id="38"/>
+			</c5>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="4">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="7"/>
+			</c0>
+			<c1 id="25">
+				<pos y="0.25"/>
+			</c1>
+			<c2 id="28">
+				<pos y="-0.5"/>
+			</c2>
+			<c3 id="31">
+				<pos x="5" y="-0.5"/>
+				<in1 component_id="33"/>
+			</c3>
+			<c4 id="35">
+				<pos y="-1.25"/>
+			</c4>
+			<c5 id="38">
+				<pos x="-1.25" y="-2.25"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

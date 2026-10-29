@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Sum2" description="Sum" width="1" length="3" id_counter="10" id_counter_node="3" sym10="3598" sym11="520" sym12="3822" sym13="2210" sym14="3758">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Input 1" mode="1" type="1" description="x"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Input 2" mode="1" type="1" description="y">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Output" type="1" description="x + y">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="6">
+				<object id="8">
+					<pos x="1.25" y="-0.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="2.5" y="-0.25"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="8">
+				<pos x="1.25" y="-0.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="7">
+				<pos x="2.5" y="-0.25"/>
+				<in1 component_id="8"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Roll Autopilot" width="2" length="2" id_counter="13" id_counter_node="4" sym1="4553" sym2="2345" sym3="2345" sym4="2351" sym5="7465" sym6="2057" sym7="6" sym9="18633" sym10="9513" sym11="9509" sym12="9511" sym13="9417" sym14="9225" sym15="9223">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="Target Roll, deg" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="5">
+			<node label="Current Roll, Rot" mode="1" type="1" description=".">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Trim" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="10" count="2">
+					<pos x="2.5" y="-0.25"/>
+					<inc component_id="11"/>
+					<in1 component_id="3"/>
+					<in2 component_id="5"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="11" count="1">
+					<pos x="1.25" y="0.75"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="12">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="13" script="p = 0.02
+standart_trim = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    target = input.getNumber(1)
+    current = input.getNumber(2)
+
+    trim = standart_trim
+
+    if on then
+        trim = (target - current * 360) * p
+    end
+
+    output.setNumber(1, trim)
+end">
+					<pos x="3.75"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos y="0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos x="1.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="5">
+					<pos x="1.25" y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="6.25" y="0.25"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="10" count="2">
+				<pos x="2.5" y="-0.25"/>
+				<inc component_id="11"/>
+				<in1 component_id="3"/>
+				<in2 component_id="5"/>
+			</c0>
+			<c1 id="11" count="1">
+				<pos x="1.25" y="0.75"/>
+				<in1 component_id="1"/>
+			</c1>
+			<c2 id="12">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="13"/>
+			</c2>
+			<c3 id="13" script="p = 0.02
+standart_trim = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    target = input.getNumber(1)
+    current = input.getNumber(2)
+
+    trim = standart_trim
+
+    if on then
+        trim = (target - current * 360) * p
+    end
+
+    output.setNumber(1, trim)
+end">
+				<pos x="3.75"/>
+				<in1 component_id="10"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos y="0.75"/>
+			</c0>
+			<c1 id="3">
+				<pos x="1.25"/>
+			</c1>
+			<c2 id="5">
+				<pos x="1.25" y="-0.75"/>
+			</c2>
+			<c3 id="8">
+				<pos x="6.25" y="0.25"/>
+				<in1 component_id="12"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

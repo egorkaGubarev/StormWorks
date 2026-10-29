@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Altitude Autopilot" width="2" length="2" id_counter="15" id_counter_node="5" sym1="4553" sym2="2345" sym3="2345" sym4="2351" sym5="7465" sym6="2057" sym7="6" sym9="1097" sym10="553" sym11="553" sym12="559" sym13="1833" sym14="553" sym15="6">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="Target altitude, m / s" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Vertical speed, m / s" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="15">
+			<node label="Current altitude, m" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="10" count="2">
+					<pos x="2.5" y="-0.25"/>
+					<inc component_id="11"/>
+					<in1 component_id="3"/>
+					<in2 component_id="15"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="11" count="1">
+					<pos x="1.25" y="0.75"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="12">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="13" script="p = 0.1
+max_vertical_speed = 10
+
+vertical_speed = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    target = input.getNumber(1)
+    current = input.getNumber(2)
+
+    if on then
+        vertical_speed = math.min(max_vertical_speed, math.max(-max_vertical_speed, (target - current) * p))
+    end
+
+    output.setNumber(1, vertical_speed)
+end">
+					<pos x="3.75"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos y="0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos x="1.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="6.25" y="0.25"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="15">
+					<pos x="1.25" y="-0.75"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="10" count="2">
+				<pos x="2.5" y="-0.25"/>
+				<inc component_id="11"/>
+				<in1 component_id="3"/>
+				<in2 component_id="15"/>
+			</c0>
+			<c1 id="11" count="1">
+				<pos x="1.25" y="0.75"/>
+				<in1 component_id="1"/>
+			</c1>
+			<c2 id="12">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="13"/>
+			</c2>
+			<c3 id="13" script="p = 0.1
+max_vertical_speed = 10
+
+vertical_speed = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    target = input.getNumber(1)
+    current = input.getNumber(2)
+
+    if on then
+        vertical_speed = math.min(max_vertical_speed, math.max(-max_vertical_speed, (target - current) * p))
+    end
+
+    output.setNumber(1, vertical_speed)
+end">
+				<pos x="3.75"/>
+				<in1 component_id="10"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos y="0.75"/>
+			</c0>
+			<c1 id="3">
+				<pos x="1.25"/>
+			</c1>
+			<c2 id="8">
+				<pos x="6.25" y="0.25"/>
+				<in1 component_id="12"/>
+			</c2>
+			<c3 id="15">
+				<pos x="1.25" y="-0.75"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

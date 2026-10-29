@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Or" description="Or logic gate" width="1" length="3" id_counter="5" id_counter_node="3" sym9="38" sym10="41" sym11="41" sym12="105" sym13="169" sym14="9" sym15="6">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="Input 1" mode="1" description="x"/>
+		</n>
+		<n id="2" component_id="2">
+			<node label="Input 2" mode="1" description="y">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="3" component_id="4">
+			<node label="Output" description="x or y">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="2">
+				<object id="5">
+					<pos x="1.25" y="-0.5"/>
+					<in1 component_id="1"/>
+					<in2 component_id="2"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1"/>
+			</c>
+			<c>
+				<object id="2">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="4">
+					<pos x="2.5" y="-0.25"/>
+					<in1 component_id="5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="5">
+				<pos x="1.25" y="-0.5"/>
+				<in1 component_id="1"/>
+				<in2 component_id="2"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1"/>
+			<c1 id="2">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="4">
+				<pos x="2.5" y="-0.25"/>
+				<in1 component_id="5"/>
+			</c2>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

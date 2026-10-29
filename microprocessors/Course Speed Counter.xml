@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Rotation Speed Counter" width="1" length="5" id_counter="20" id_counter_node="5" sym1="14375" sym2="1064" sym3="1256" sym4="1318" sym5="1313" sym6="1249" sym7="14350" sym9="4297" sym10="2345" sym11="2341" sym12="2343" sym13="7369" sym14="2057" sym15="7">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Pitch, rot" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Pitch Speed, rot / s" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="Roll, rot" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Yaw Speed, rot / s" mode="1" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="11">
+			<node label="Course Change Speed, rot / s" type="1">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1020668499">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="45">
+				<object id="12" e="sin(pi2 * x)">
+					<pos x="1.25" y="-1.5"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="13">
+					<pos x="2.5" y="-1.25"/>
+					<in1 component_id="4"/>
+					<in2 component_id="12"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="16" e="cos(pi2 * x)">
+					<pos x="1.25"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="17" e="cos(pi2 * x)">
+					<pos x="1.25" y="-2.25"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="18">
+					<pos x="2.5" y="-2.75"/>
+					<in1 component_id="17"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="19">
+					<pos x="3.75" y="-1.5"/>
+					<in1 component_id="16"/>
+					<in2 component_id="18"/>
+				</object>
+			</c>
+			<c type="6">
+				<object id="20">
+					<pos x="5" y="-1"/>
+					<in1 component_id="13"/>
+					<in2 component_id="19"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos y="-3"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="11">
+					<pos x="6.25" y="-0.75"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="12" e="sin(pi2 * x)">
+				<pos x="1.25" y="-1.5"/>
+				<in1 component_id="6"/>
+			</c0>
+			<c1 id="13">
+				<pos x="2.5" y="-1.25"/>
+				<in1 component_id="4"/>
+				<in2 component_id="12"/>
+			</c1>
+			<c2 id="16" e="cos(pi2 * x)">
+				<pos x="1.25"/>
+				<in1 component_id="2"/>
+			</c2>
+			<c3 id="17" e="cos(pi2 * x)">
+				<pos x="1.25" y="-2.25"/>
+				<in1 component_id="6"/>
+			</c3>
+			<c4 id="18">
+				<pos x="2.5" y="-2.75"/>
+				<in1 component_id="17"/>
+				<in2 component_id="8"/>
+			</c4>
+			<c5 id="19">
+				<pos x="3.75" y="-1.5"/>
+				<in1 component_id="16"/>
+				<in2 component_id="18"/>
+			</c5>
+			<c6 id="20">
+				<pos x="5" y="-1"/>
+				<in1 component_id="13"/>
+				<in2 component_id="19"/>
+			</c6>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="6">
+				<pos y="-1.5"/>
+			</c2>
+			<c3 id="8">
+				<pos y="-3"/>
+			</c3>
+			<c4 id="11">
+				<pos x="6.25" y="-0.75"/>
+				<in1 component_id="20"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

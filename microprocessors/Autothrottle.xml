@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Autothrottle" description="Controls speed" width="2" length="3" id_counter="16" id_counter_node="6" sym1="2628" sym2="2628" sym3="2628" sym4="6724" sym5="10692" sym6="68" sym7="95" sym9="4553" sym10="2345" sym11="2345" sym12="2351" sym13="7465" sym14="2057" sym15="6">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="Target Speed, m / s" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="5">
+			<node label="Current Speed, m / s" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="7">
+			<node label="Up Throttle">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="9">
+			<node label="Down Throttle">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="16">
+			<node label="Current Throttle" mode="1" type="1">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="41">
+				<object id="10" count="1">
+					<pos x="1.25"/>
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="11" count="3">
+					<pos x="2.5" y="-1"/>
+					<inc component_id="10"/>
+					<in1 component_id="3"/>
+					<in2 component_id="5"/>
+					<in3 component_id="16"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="12" script="i = 0.0001
+d = 10
+dead_zone = 0.01
+min_throttle = 0.2
+
+prev_speed = 0
+integral = 0
+throttle = min_throttle
+
+function onTick()
+    on = input.getBool(1)
+    target = input.getNumber(1)
+    current_speed = input.getNumber(2)
+    current_throttle = input.getNumber(3)
+
+    if on then
+        integral = math.max(min_throttle, math.min(1, integral + (target - current_speed) * i))
+        throttle = (prev_speed - current_speed) * d + integral
+    else
+        throttle = current_throttle
+    end
+
+    up = false
+    down = false
+
+    if current_throttle &lt; throttle - dead_zone then
+        up = true
+    end
+
+    if current_throttle &gt; throttle + dead_zone then
+        down = true
+    end
+
+    prev_speed = current_speed
+
+    output.setBool(1, up)
+    output.setBool(2, down)
+end">
+					<pos x="3.75" y="-0.75"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="13">
+					<pos x="5" y="-0.25"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="14" i="1">
+					<pos x="5" y="-1"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1"/>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="5">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="7">
+					<pos x="6.25" y="-0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="9">
+					<pos x="6.25" y="-1"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="16">
+					<pos y="-2.25"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="10" count="1">
+				<pos x="1.25"/>
+				<in1 component_id="1"/>
+			</c0>
+			<c1 id="11" count="3">
+				<pos x="2.5" y="-1"/>
+				<inc component_id="10"/>
+				<in1 component_id="3"/>
+				<in2 component_id="5"/>
+				<in3 component_id="16"/>
+			</c1>
+			<c2 id="12" script="i = 0.0001
+d = 10
+dead_zone = 0.01
+min_throttle = 0.2
+
+prev_speed = 0
+integral = 0
+throttle = min_throttle
+
+function onTick()
+    on = input.getBool(1)
+    target = input.getNumber(1)
+    current_speed = input.getNumber(2)
+    current_throttle = input.getNumber(3)
+
+    if on then
+        integral = math.max(min_throttle, math.min(1, integral + (target - current_speed) * i))
+        throttle = (prev_speed - current_speed) * d + integral
+    else
+        throttle = current_throttle
+    end
+
+    up = false
+    down = false
+
+    if current_throttle &lt; throttle - dead_zone then
+        up = true
+    end
+
+    if current_throttle &gt; throttle + dead_zone then
+        down = true
+    end
+
+    prev_speed = current_speed
+
+    output.setBool(1, up)
+    output.setBool(2, down)
+end">
+				<pos x="3.75" y="-0.75"/>
+				<in1 component_id="11"/>
+			</c2>
+			<c3 id="13">
+				<pos x="5" y="-0.25"/>
+				<in1 component_id="12"/>
+			</c3>
+			<c4 id="14" i="1">
+				<pos x="5" y="-1"/>
+				<in1 component_id="12"/>
+			</c4>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1"/>
+			<c1 id="3">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="5">
+				<pos y="-1.5"/>
+			</c2>
+			<c3 id="7">
+				<pos x="6.25" y="-0.25"/>
+				<in1 component_id="13"/>
+			</c3>
+			<c4 id="9">
+				<pos x="6.25" y="-1"/>
+				<in1 component_id="14"/>
+			</c4>
+			<c5 id="16">
+				<pos y="-2.25"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

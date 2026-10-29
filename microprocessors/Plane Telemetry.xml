@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Plane Telemetry" width="1" length="5" id_counter="16" id_counter_node="5" sym1="4996" sym2="2116" sym3="3012" sym4="2628" sym5="2436" sym6="2052" sym7="2079" sym9="2369" sym10="2337" sym11="2337" sym12="2343" sym13="1833" sym14="41" sym15="39">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Pitch, deg" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Pitch Speed, deg / s" mode="1" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="6">
+			<node label="Yaw Speed, deg / s" mode="1" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Roll, deg" mode="1" type="1">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="5" component_id="11">
+			<node label="Telemetry" type="5">
+				<position z="4"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1020668499">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="13" count="4">
+					<pos x="1.25" y="-1.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+					<in3 component_id="6"/>
+					<in4 component_id="8"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="6">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="8">
+					<pos y="-2.25"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="11">
+					<pos x="2.5" y="-0.5"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="13" count="4">
+				<pos x="1.25" y="-1.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+				<in3 component_id="6"/>
+				<in4 component_id="8"/>
+			</c0>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="6">
+				<pos y="-1.5"/>
+			</c2>
+			<c3 id="8">
+				<pos y="-2.25"/>
+			</c3>
+			<c4 id="11">
+				<pos x="2.5" y="-0.5"/>
+				<in1 component_id="13"/>
+			</c4>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

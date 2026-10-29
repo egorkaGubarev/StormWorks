@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Stab" description="Stabilizator" width="2" length="2" id_counter="17" id_counter_node="4" sym9="3719" sym10="4680" sym11="4680" sym12="3654" sym13="737" sym14="577" sym15="14">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Current Roll, rot" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Pitch, rot" mode="1" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Roll Correction" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Pitch Correction" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="13" count="2">
+					<pos x="1.25" y="-0.5"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="14" script="function onTick()
+    output.setNumber(1, 4 * input.getNumber(1))
+    output.setNumber(2, 4 * input.getNumber(2))
+end">
+					<pos x="2.5" y="-0.25"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="16">
+					<pos x="3.75" y="0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="17" i="1">
+					<pos x="3.75" y="-0.5"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="16"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="10">
+					<pos x="5" y="-0.5"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="13" count="2">
+				<pos x="1.25" y="-0.5"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+			</c0>
+			<c1 id="14" script="function onTick()
+    output.setNumber(1, 4 * input.getNumber(1))
+    output.setNumber(2, 4 * input.getNumber(2))
+end">
+				<pos x="2.5" y="-0.25"/>
+				<in1 component_id="13"/>
+			</c1>
+			<c2 id="16">
+				<pos x="3.75" y="0.25"/>
+				<in1 component_id="14"/>
+			</c2>
+			<c3 id="17" i="1">
+				<pos x="3.75" y="-0.5"/>
+				<in1 component_id="14"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="4">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="7">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="16"/>
+			</c2>
+			<c3 id="10">
+				<pos x="5" y="-0.5"/>
+				<in1 component_id="17"/>
+			</c3>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

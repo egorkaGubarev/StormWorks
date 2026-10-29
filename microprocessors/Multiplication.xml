@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Multiplication" width="1" length="2" id_counter="8" id_counter_node="2" sym9="5009" sym10="2641" sym11="2645" sym12="2645" sym13="2651" sym14="2075" sym15="2065">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="x" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="x * 360" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="15">
+				<object id="7">
+					<pos y="-0.5"/>
+					<n text="360" value="360"/>
+				</object>
+			</c>
+			<c type="8">
+				<object id="8">
+					<pos x="1.25" y="-0.25"/>
+					<in1 component_id="2"/>
+					<in2 component_id="7"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2">
+					<pos y="0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="2.5"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="7">
+				<pos y="-0.5"/>
+				<n text="360" value="360"/>
+			</c0>
+			<c1 id="8">
+				<pos x="1.25" y="-0.25"/>
+				<in1 component_id="2"/>
+				<in2 component_id="7"/>
+			</c1>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos y="0.25"/>
+			</c0>
+			<c1 id="5">
+				<pos x="2.5"/>
+				<in1 component_id="8"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

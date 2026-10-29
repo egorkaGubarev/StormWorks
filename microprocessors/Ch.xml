@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Ch" description="Charger" width="1" length="2" id_counter="9" id_counter_node="2" sym8="604" sym9="578" sym10="578" sym11="578" sym12="450" sym13="66" sym14="92">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Battery Charge" mode="1" type="1"/>
+		</n>
+		<n id="2" component_id="5">
+			<node label="Generator Clatch Pressure" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="6" count="1">
+					<pos x="1.25"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="8" script="min_charge = 0.5
+max_charge = 0.9
+
+clutch = 0
+clutch_step = 0.01
+
+function onTick()
+	charge = input.getNumber(1)
+
+    if charge &lt; min_charge then
+        clutch = math.min(clutch + clutch_step, 1)
+    else
+        if charge &gt; max_charge then
+            clutch = math.max(clutch - clutch_step, 0)
+        end
+    end
+
+	output.setNumber(1, clutch)
+end">
+					<pos x="2.5"/>
+					<in1 component_id="6"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="9">
+					<pos x="3.75" y="0.25"/>
+					<in1 component_id="8"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2"/>
+			</c>
+			<c type="3">
+				<object id="5">
+					<pos x="5" y="0.25"/>
+					<in1 component_id="9"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="6" count="1">
+				<pos x="1.25"/>
+				<in1 component_id="2"/>
+			</c0>
+			<c1 id="8" script="min_charge = 0.5
+max_charge = 0.9
+
+clutch = 0
+clutch_step = 0.01
+
+function onTick()
+	charge = input.getNumber(1)
+
+    if charge &lt; min_charge then
+        clutch = math.min(clutch + clutch_step, 1)
+    else
+        if charge &gt; max_charge then
+            clutch = math.max(clutch - clutch_step, 0)
+        end
+    end
+
+	output.setNumber(1, clutch)
+end">
+				<pos x="2.5"/>
+				<in1 component_id="6"/>
+			</c1>
+			<c2 id="9">
+				<pos x="3.75" y="0.25"/>
+				<in1 component_id="8"/>
+			</c2>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2"/>
+			<c1 id="5">
+				<pos x="5" y="0.25"/>
+				<in1 component_id="9"/>
+			</c1>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

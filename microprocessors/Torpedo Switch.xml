@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Torpedo Switch" description="Switches torpedo control" width="2" length="3" id_counter="20" id_counter_node="6" sym9="452" sym10="516" sym11="388" sym12="68" sym13="900" sym14="4" sym15="31">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="Switch" mode="1"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Video Channel" type="1">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Telemetry Channel" type="1">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Trigger" mode="1" description="Push button">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="10">
+			<node label="Fire Left" description="Connector">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="12">
+			<node label="Fire Right" description="Connector">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="1020668499">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="41">
+				<object id="13" count="2">
+					<pos x="1.25" y="-0.25"/>
+					<in1 component_id="1"/>
+					<in2 component_id="8"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="14" script="function onTick()
+    control_right = input.getBool(1)
+    fire = input.getBool(2)
+
+    if control_right then
+        fire_left = false
+        fire_right = fire
+        telemetry_channel = 2
+        video_channel = 1
+    else
+        fire_left = fire
+        fire_right = false
+        telemetry_channel = 1
+        video_channel = 0
+    end
+
+    output.setBool(1, fire_left)
+    output.setBool(2, fire_right)
+    output.setNumber(1, telemetry_channel)
+    output.setNumber(2, video_channel)
+end">
+					<pos x="2.5"/>
+					<in1 component_id="13"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="17" i="1">
+					<pos x="3.75" y="0.5"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="18">
+					<pos x="3.75" y="1.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="19">
+					<pos x="3.75" y="-0.25"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="20" i="1">
+					<pos x="3.75" y="-1"/>
+					<in1 component_id="14"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos y="0.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="4">
+					<pos x="5" y="-1"/>
+					<in1 component_id="20"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="5" y="-0.25"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c>
+				<object id="8">
+					<pos y="-0.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="10">
+					<pos x="5" y="1.25"/>
+					<in1 component_id="18"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="12">
+					<pos x="5" y="0.5"/>
+					<in1 component_id="17"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="13" count="2">
+				<pos x="1.25" y="-0.25"/>
+				<in1 component_id="1"/>
+				<in2 component_id="8"/>
+			</c0>
+			<c1 id="14" script="function onTick()
+    control_right = input.getBool(1)
+    fire = input.getBool(2)
+
+    if control_right then
+        fire_left = false
+        fire_right = fire
+        telemetry_channel = 2
+        video_channel = 1
+    else
+        fire_left = fire
+        fire_right = false
+        telemetry_channel = 1
+        video_channel = 0
+    end
+
+    output.setBool(1, fire_left)
+    output.setBool(2, fire_right)
+    output.setNumber(1, telemetry_channel)
+    output.setNumber(2, video_channel)
+end">
+				<pos x="2.5"/>
+				<in1 component_id="13"/>
+			</c1>
+			<c2 id="17" i="1">
+				<pos x="3.75" y="0.5"/>
+				<in1 component_id="14"/>
+			</c2>
+			<c3 id="18">
+				<pos x="3.75" y="1.25"/>
+				<in1 component_id="14"/>
+			</c3>
+			<c4 id="19">
+				<pos x="3.75" y="-0.25"/>
+				<in1 component_id="14"/>
+			</c4>
+			<c5 id="20" i="1">
+				<pos x="3.75" y="-1"/>
+				<in1 component_id="14"/>
+			</c5>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos y="0.25"/>
+			</c0>
+			<c1 id="4">
+				<pos x="5" y="-1"/>
+				<in1 component_id="20"/>
+			</c1>
+			<c2 id="7">
+				<pos x="5" y="-0.25"/>
+				<in1 component_id="19"/>
+			</c2>
+			<c3 id="8">
+				<pos y="-0.5"/>
+			</c3>
+			<c4 id="10">
+				<pos x="5" y="1.25"/>
+				<in1 component_id="18"/>
+			</c4>
+			<c5 id="12">
+				<pos x="5" y="0.5"/>
+				<in1 component_id="17"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

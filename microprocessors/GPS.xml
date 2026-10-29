@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="GPS" description="Counts azimuth and distance" width="2" length="3" id_counter="23" id_counter_node="6" sym9="7206" sym10="8233" sym11="8233" sym12="6381" sym13="1313" sym14="1313" sym15="14574">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Current x" mode="1" type="1" description="x coordinate"/>
+		</n>
+		<n id="2" component_id="4">
+			<node label="Current y" mode="1" type="1" description="y coordinate">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Azimuth" type="1" description="Azimuth to the target">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="10">
+			<node label="Distance" type="1" description="Distance to the target">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="12">
+			<node label="Target x" mode="1" type="1" description="Target x coordinate">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="14">
+			<node label="Target y" mode="1" type="1" description="Target y coordinate">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data>
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="40">
+				<object id="19" count="4">
+					<pos x="1.5" y="-1.75"/>
+					<in1 component_id="2"/>
+					<in2 component_id="4"/>
+					<in3 component_id="12"/>
+					<in4 component_id="14"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="21" script="function onTick()
+	x = input.getNumber(1)
+    y = input.getNumber(2)
+
+    target_x = input.getNumber(3)
+    target_y = input.getNumber(4)
+
+    dx = target_x - x
+    dy = target_y - y
+
+    distance = (dx ^ 2 + dy ^ 2) ^ 0.5
+    azimuth = 90 - math.atan(dy / dx) * 180 / math.pi
+
+    if dx &lt; 0 then
+        azimuth = azimuth + 180
+    end
+
+    output.setNumber(1, azimuth)
+	output.setNumber(2, distance / 1000)
+end">
+					<pos x="2.75" y="-1"/>
+					<in1 component_id="19"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="22" i="1">
+					<pos x="4" y="-1.25"/>
+					<in1 component_id="21"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="23">
+					<pos x="4" y="-0.5"/>
+					<in1 component_id="21"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="2">
+				<object id="2">
+					<pos y="-0.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="4">
+					<pos y="-1"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="5.25" y="-0.5"/>
+					<in1 component_id="23"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="10">
+					<pos x="5.25" y="-1.25"/>
+					<in1 component_id="22"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="12">
+					<pos y="-1.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="14">
+					<pos y="-2.5"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="19" count="4">
+				<pos x="1.5" y="-1.75"/>
+				<in1 component_id="2"/>
+				<in2 component_id="4"/>
+				<in3 component_id="12"/>
+				<in4 component_id="14"/>
+			</c0>
+			<c1 id="21" script="function onTick()
+	x = input.getNumber(1)
+    y = input.getNumber(2)
+
+    target_x = input.getNumber(3)
+    target_y = input.getNumber(4)
+
+    dx = target_x - x
+    dy = target_y - y
+
+    distance = (dx ^ 2 + dy ^ 2) ^ 0.5
+    azimuth = 90 - math.atan(dy / dx) * 180 / math.pi
+
+    if dx &lt; 0 then
+        azimuth = azimuth + 180
+    end
+
+    output.setNumber(1, azimuth)
+	output.setNumber(2, distance / 1000)
+end">
+				<pos x="2.75" y="-1"/>
+				<in1 component_id="19"/>
+			</c1>
+			<c2 id="22" i="1">
+				<pos x="4" y="-1.25"/>
+				<in1 component_id="21"/>
+			</c2>
+			<c3 id="23">
+				<pos x="4" y="-0.5"/>
+				<in1 component_id="21"/>
+			</c3>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos y="-0.25"/>
+			</c0>
+			<c1 id="4">
+				<pos y="-1"/>
+			</c1>
+			<c2 id="7">
+				<pos x="5.25" y="-0.5"/>
+				<in1 component_id="23"/>
+			</c2>
+			<c3 id="10">
+				<pos x="5.25" y="-1.25"/>
+				<in1 component_id="22"/>
+			</c3>
+			<c4 id="12">
+				<pos y="-1.75"/>
+			</c4>
+			<c5 id="14">
+				<pos y="-2.5"/>
+			</c5>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+

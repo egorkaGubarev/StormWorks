@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Lander" description="Lands plane" width="2" length="5" id_counter="26" id_counter_node="8" sym9="4839" sym10="4753" sym11="4833" sym12="4737" sym13="3697" sym14="1" sym15="1">
+	<nodes>
+		<n id="1" component_id="1">
+			<node label="On" mode="1" description="On signal"/>
+		</n>
+		<n id="2" component_id="3">
+			<node label="x, m" mode="1" type="1" description="GPS">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="5">
+			<node label="y, m" mode="1" type="1" description="GPS">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="4" component_id="8">
+			<node label="Target x, m" type="1">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="5" component_id="15">
+			<node label="Target y, m" type="1">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="6" component_id="18">
+			<node label="Course, deg" type="1">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="7" component_id="20">
+			<node label="Course guide">
+				<position z="3"/>
+			</node>
+		</n>
+		<n id="8" component_id="22">
+			<node label="GPS guide">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="-16635778">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="41">
+				<object id="9" count="1">
+					<in1 component_id="1"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="10" count="2">
+					<pos x="1.25" y="-1"/>
+					<inc component_id="9"/>
+					<in1 component_id="3"/>
+					<in2 component_id="5"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="11" script='x_land = 3570
+y_land = -5650
+
+run_course = 130
+appr_proj = 20000
+target_appr_dist = 30000
+p = 2
+
+course_rad = run_course * math.pi / 180
+
+sin_course = math.sin(course_rad)
+cos_course = math.cos(course_rad)
+
+target_x = x_land - sin_course * target_appr_dist
+target_y = y_land - cos_course * target_appr_dist
+
+course = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    x = input.getNumber(1)
+    y = input.getNumber(2)
+
+    if on then
+        dx = x - x_land
+        dy = y - y_land
+
+        proj = -(sin_course * dx + cos_course * dy)
+        shift = cos_course * dx - sin_course * dy
+
+        if proj &gt; appr_proj then
+            stat = "final"
+        end
+
+        if stat == "appr" then
+            course_guide = false
+            gps_guide = true
+        else
+            course_guide = true
+            gps_guide = false
+            course = run_course - math.max(-90, math.min(90, math.atan(shift / proj) * 180 / math.pi * p))
+        end
+
+    else
+        course_guide = false
+        gps_guide = false
+        stat = "appr"
+    end
+
+    output.setNumber(1, target_x)
+    output.setNumber(2, target_y)
+    output.setNumber(3, course)
+
+    output.setBool(1, course_guide)
+    output.setBool(2, gps_guide)
+end'>
+					<pos x="2.5" y="-0.75"/>
+					<in1 component_id="10"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="12">
+					<pos x="3.75" y="-1"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="23">
+					<pos x="3.75" y="0.5"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="29">
+				<object id="24" i="1">
+					<pos x="3.75" y="-0.25"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="25" i="1">
+					<pos x="3.75" y="-1.75"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="26" i="2">
+					<pos x="3.75" y="-2.5"/>
+					<in1 component_id="11"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c>
+				<object id="1">
+					<pos x="-1.5"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="3">
+					<pos y="-0.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="5">
+					<pos y="-1.5"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="5" y="-1"/>
+					<in1 component_id="12"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="15">
+					<pos x="5" y="-1.75"/>
+					<in1 component_id="25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="18">
+					<pos x="5" y="-2.5"/>
+					<in1 component_id="26"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="20">
+					<pos x="5" y="0.5"/>
+					<in1 component_id="23"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="22">
+					<pos x="5" y="-0.25"/>
+					<in1 component_id="24"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="9" count="1">
+				<in1 component_id="1"/>
+			</c0>
+			<c1 id="10" count="2">
+				<pos x="1.25" y="-1"/>
+				<inc component_id="9"/>
+				<in1 component_id="3"/>
+				<in2 component_id="5"/>
+			</c1>
+			<c2 id="11" script='x_land = 3570
+y_land = -5650
+
+run_course = 130
+appr_proj = 20000
+target_appr_dist = 30000
+p = 2
+
+course_rad = run_course * math.pi / 180
+
+sin_course = math.sin(course_rad)
+cos_course = math.cos(course_rad)
+
+target_x = x_land - sin_course * target_appr_dist
+target_y = y_land - cos_course * target_appr_dist
+
+course = 0
+
+function onTick()
+    on = input.getBool(1)
+
+    x = input.getNumber(1)
+    y = input.getNumber(2)
+
+    if on then
+        dx = x - x_land
+        dy = y - y_land
+
+        proj = -(sin_course * dx + cos_course * dy)
+        shift = cos_course * dx - sin_course * dy
+
+        if proj &gt; appr_proj then
+            stat = "final"
+        end
+
+        if stat == "appr" then
+            course_guide = false
+            gps_guide = true
+        else
+            course_guide = true
+            gps_guide = false
+            course = run_course - math.max(-90, math.min(90, math.atan(shift / proj) * 180 / math.pi * p))
+        end
+
+    else
+        course_guide = false
+        gps_guide = false
+        stat = "appr"
+    end
+
+    output.setNumber(1, target_x)
+    output.setNumber(2, target_y)
+    output.setNumber(3, course)
+
+    output.setBool(1, course_guide)
+    output.setBool(2, gps_guide)
+end'>
+				<pos x="2.5" y="-0.75"/>
+				<in1 component_id="10"/>
+			</c2>
+			<c3 id="12">
+				<pos x="3.75" y="-1"/>
+				<in1 component_id="11"/>
+			</c3>
+			<c4 id="23">
+				<pos x="3.75" y="0.5"/>
+				<in1 component_id="11"/>
+			</c4>
+			<c5 id="24" i="1">
+				<pos x="3.75" y="-0.25"/>
+				<in1 component_id="11"/>
+			</c5>
+			<c6 id="25" i="1">
+				<pos x="3.75" y="-1.75"/>
+				<in1 component_id="11"/>
+			</c6>
+			<c7 id="26" i="2">
+				<pos x="3.75" y="-2.5"/>
+				<in1 component_id="11"/>
+			</c7>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="1">
+				<pos x="-1.5"/>
+			</c0>
+			<c1 id="3">
+				<pos y="-0.75"/>
+			</c1>
+			<c2 id="5">
+				<pos y="-1.5"/>
+			</c2>
+			<c3 id="8">
+				<pos x="5" y="-1"/>
+				<in1 component_id="12"/>
+			</c3>
+			<c4 id="15">
+				<pos x="5" y="-1.75"/>
+				<in1 component_id="25"/>
+			</c4>
+			<c5 id="18">
+				<pos x="5" y="-2.5"/>
+				<in1 component_id="26"/>
+			</c5>
+			<c6 id="20">
+				<pos x="5" y="0.5"/>
+				<in1 component_id="23"/>
+			</c6>
+			<c7 id="22">
+				<pos x="5" y="-0.25"/>
+				<in1 component_id="24"/>
+			</c7>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+
